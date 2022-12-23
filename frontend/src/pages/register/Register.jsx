@@ -37,13 +37,16 @@ const Register = () => {
 	const googleLoginSuccess = async (response) => {
 		if (response) {
 			try {
-				const res = await axios.post("http://localhost:5000/auth/google", {
-					fullName: response?.profileObj.name,
-					avatar: response?.profileObj.imageUrl,
-					googleId: response?.profileObj.googleId,
-					googleEmail: response?.profileObj.email,
-					regType: "Google",
-				});
+				const res = await axios.post(
+					"https://advanced-authentication.onrender.com/auth/google",
+					{
+						fullName: response?.profileObj.name,
+						avatar: response?.profileObj.imageUrl,
+						googleId: response?.profileObj.googleId,
+						googleEmail: response?.profileObj.email,
+						regType: "Google",
+					}
+				);
 				if (res.status === 200) {
 					setCurrentUser(res.data);
 					localStorage.setItem("user", JSON.stringify(res.data));
@@ -72,11 +75,14 @@ const Register = () => {
 			return setError("Passwords do not match!");
 		} else {
 			try {
-				const res = await axios.post("http://localhost:5000/auth/register", {
-					fullName,
-					email,
-					password,
-				});
+				const res = await axios.post(
+					"https://advanced-authentication.onrender.com/auth/register",
+					{
+						fullName,
+						email,
+						password,
+					}
+				);
 				if (res.status === 201) {
 					setCurrentUser(res.data);
 					localStorage.setItem("user", JSON.stringify(res.data));

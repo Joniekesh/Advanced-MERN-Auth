@@ -36,7 +36,10 @@ const App = () => {
 	useEffect(() => {
 		const fetchProfile = async () => {
 			try {
-				const res = await axios.get("http://localhost:5000/auth/me", config);
+				const res = await axios.get(
+					"https://advanced-authentication.onrender.com/me",
+					config
+				);
 
 				setProfile(res.data);
 				localStorage.setItem("profile", JSON.stringify(res.data));
