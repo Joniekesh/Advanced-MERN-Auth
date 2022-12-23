@@ -1,0 +1,53 @@
+@import "../../global.scss";
+
+.navbar {
+	width: 100vw;
+	height: 70px;
+	background-color: #23488d;
+	color: white;
+	position: sticky;
+	top: 0;
+	z-index: 2;
+
+	.container {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		padding: 10px 50px;
+
+		@include tablet {
+			padding: 10px 20px;
+		}
+
+		.right {
+			display: flex;
+			align-items: center;
+			gap: 10px;
+
+			// img {
+			// 	width: 30px;
+			// 	height: 30px;
+			// 	border-radius: 50%;
+			// 	object-fit: cover;
+			// }
+
+			span {
+				font-weight: bold;
+			}
+
+			button {
+				padding: 4px;
+				cursor: pointer;
+				color: #23488d;
+				border-radius: 5px;
+				border: none;
+				font-weight: bold;
+				transition: all 0.5s ease-in-out;
+
+				&:hover {
+					transform: scale(1.03);
+				}
+			}
+		}
+	}
+}
