@@ -16,6 +16,16 @@ const Home = () => {
 			<div className="container">
 				<h1>{user?.fullName}</h1>
 				<span>Welcome to our platform.</span>
+				<p>
+					<span>
+						<b>Disclaimer:</b>
+					</span>{" "}
+					<br />
+					<span>
+						This is not in any way to harvest anybody's data but for only
+						testing purpose.
+					</span>
+				</p>
 			</div>
 		</div>
 	);
