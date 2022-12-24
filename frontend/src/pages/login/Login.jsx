@@ -35,16 +35,13 @@ const Login = () => {
 	const googleLoginSuccess = async (response) => {
 		if (response) {
 			try {
-				const res = await axios.post(
-					"https://advanced-authentication.onrender.com/auth/google",
-					{
-						fullName: response?.profileObj.name,
-						avatar: response?.profileObj.imageUrl,
-						googleId: response?.profileObj.googleId,
-						googleEmail: response?.profileObj.email,
-						regType: "Google",
-					}
-				);
+				const res = await axios.post("http://localhost:3000/auth/google", {
+					fullName: response?.profileObj.name,
+					avatar: response?.profileObj.imageUrl,
+					googleId: response?.profileObj.googleId,
+					googleEmail: response?.profileObj.email,
+					regType: "Google",
+				});
 				if (res.status === 200) {
 					setCurrentUser(res.data);
 					localStorage.setItem("user", JSON.stringify(res.data));
@@ -65,13 +62,10 @@ const Login = () => {
 		e.preventDefault();
 
 		try {
-			const res = await axios.post(
-				"https://advanced-authentication.onrender.com/auth/login",
-				{
-					email,
-					password,
-				}
-			);
+			const res = await axios.post("http://localhost:3000/auth/login", {
+				email,
+				password,
+			});
 			if (res.status === 200) {
 				setCurrentUser(res.data);
 				localStorage.setItem("user", JSON.stringify(res.data));
