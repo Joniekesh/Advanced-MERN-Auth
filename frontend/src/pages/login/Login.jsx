@@ -1,6 +1,6 @@
 import "./login.scss";
 import GoogleIcon from "../../images/googleIcon.png";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { GoogleLogin } from "react-google-login";
 import { gapi } from "gapi-script";

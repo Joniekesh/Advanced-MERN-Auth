@@ -13,7 +13,7 @@ const ForgotPassword = () => {
 
 		try {
 			const res = await axios.post(
-				"http://localhost:5000/auth/forgotPassword",
+				"https://advanced-mern-auth.onrender.com/auth/forgotPassword",
 				{ email }
 			);
 			if (res.status === 200) {

@@ -9,57 +9,35 @@ import Login from "./pages/login/Login";
 import Register from "./pages/register/Register";
 import ResetPassword from "./pages/resetPassword/ResetPassword";
 import { useEffect, useState } from "react";
-import axios from "axios";
 import ForgotPassword from "./pages/forgotPassword/ForgotPassword";
 import Navbar from "./components/navbar/Navbar";
 
 const App = () => {
-	const [profile, setProfile] = useState(null);
-	const currentUser = JSON.parse(localStorage.getItem("user"));
-	const user = currentUser?.user;
-	const TOKEN = currentUser?.token;
+	const [TOKEN, setToken] = useState("");
+
+	useEffect(() => {
+		const currentUser = JSON.parse(localStorage.getItem("user"));
+		setToken(currentUser?.token);
+	}, []);
 
 	const ProtectedRoute = ({ children }) => {
-		if (!user) {
+		if (!TOKEN) {
 			return <Navigate to="/login" />;
 		}
 
 		return children;
 	};
 
-	const config = {
-		headers: {
-			Authorization: `Bearer ${TOKEN}`,
-		},
-	};
-
-	useEffect(() => {
-		const fetchProfile = async () => {
-			try {
-				const res = await axios.get(
-					"https://advanced-mern-auth.onrender.com/me",
-					config
-				);
-
-				setProfile(res.data);
-				localStorage.setItem("profile", JSON.stringify(res.data));
-			} catch (error) {
-				console.log(error);
-			}
-		};
-		fetchProfile();
-	}, []);
-
 	return (
 		<Router>
-			<Navbar profile={profile} />
+			<Navbar />
 			<Routes>
 				<Route
 					exact
 					path="/"
 					element={
 						<ProtectedRoute>
-							<Home profile={profile} />
+							<Home />
 						</ProtectedRoute>
 					}
 				></Route>

@@ -1,7 +1,15 @@
 import "./navbar.scss";
 import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
 
-const Navbar = ({ profile }) => {
+const Navbar = () => {
+	const [user, setUser] = useState(null);
+
+	useEffect(() => {
+		const currentUser = JSON.parse(localStorage.getItem("user"));
+		setUser(currentUser?.user);
+	}, []);
+
 	const handleLogout = () => {
 		localStorage.removeItem("user");
 		window.location.replace("/login");
@@ -16,10 +24,10 @@ const Navbar = ({ profile }) => {
 					</Link>
 				</div>
 				<div className="right">
-					{profile && (
+					{user && (
 						<>
-							<span>{profile?.fullName}</span>
-							{/* <img src={profile?.avatar} alt="" /> */}
+							<span>{user?.fullName}</span>
+							{/* <img src={user?.avatar} alt="" /> */}
 							<button onClick={handleLogout}>LOGOUT</button>
 						</>
 					)}

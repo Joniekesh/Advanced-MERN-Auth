@@ -26,7 +26,7 @@ const ResetPassword = () => {
 		} else {
 			try {
 				const res = await axios.put(
-					`http://localhost:5000/auth/passwordreset/${resetToken}`,
+					`https://advanced-mern-auth.onrender.com/auth/passwordreset/${resetToken}`,
 					{ password, resetToken }
 				);
 				if (res.status === 200) {
