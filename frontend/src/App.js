@@ -36,7 +36,10 @@ const App = () => {
 	useEffect(() => {
 		const fetchProfile = async () => {
 			try {
-				const res = await axios.get("http://localhost:3000/me", config);
+				const res = await axios.get(
+					"https://advanced-mern-auth.onrender.com/me",
+					config
+				);
 
 				setProfile(res.data);
 				localStorage.setItem("profile", JSON.stringify(res.data));
