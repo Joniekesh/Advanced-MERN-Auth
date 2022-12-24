@@ -27,7 +27,11 @@ const Navbar = () => {
 					{user && (
 						<>
 							<span>{user?.fullName}</span>
-							<img src={user?.avatar} alt="" />
+							{user?.avatar ? (
+								<img src={user?.avatar} alt="" />
+							) : (
+								<img src="/assets/avatar.jpeg" alt="" />
+							)}
 							<button onClick={handleLogout}>LOGOUT</button>
 						</>
 					)}

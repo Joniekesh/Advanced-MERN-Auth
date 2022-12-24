@@ -9,7 +9,6 @@ import axios from "axios";
 const Login = () => {
 	const [toggle, setToggle] = useState(false);
 	const [isLogin, setIsLogin] = useState(true);
-	const [currentUser, setCurrentUser] = useState({ user: null, token: "" });
 
 	const [fullName, setFullName] = useState("");
 	const [email, setEmail] = useState("");
@@ -46,7 +45,6 @@ const Login = () => {
 					}
 				);
 				if (res.status === 200) {
-					setCurrentUser(res.data);
 					localStorage.setItem("user", JSON.stringify(res.data));
 					window.location.replace("/");
 				}
@@ -73,7 +71,6 @@ const Login = () => {
 				}
 			);
 			if (res.status === 200) {
-				setCurrentUser(res.data);
 				localStorage.setItem("user", JSON.stringify(res.data));
 				window.location.replace("/");
 			}

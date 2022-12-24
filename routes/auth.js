@@ -110,7 +110,7 @@ router.post("/forgotPassword", async (req, res) => {
 		await user.save();
 
 		// Create Reset URL to email to provided email address
-		const resetUrl = `http://localhost:3000/passwordreset/${resetToken}`;
+		const resetUrl = `https://advanced-mern-authentication.netlify.app/${resetToken}`;
 
 		//HTML Message
 		const message = `

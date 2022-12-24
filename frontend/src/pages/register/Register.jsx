@@ -1,6 +1,6 @@
 import "./register.scss";
 import GoogleIcon from "../../images/googleIcon.png";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { GoogleLogin } from "react-google-login";
 import { gapi } from "gapi-script";
@@ -8,8 +8,6 @@ import axios from "axios";
 
 const Register = () => {
 	const [toggle, setToggle] = useState(false);
-	const [isLogin, setIsLogin] = useState(true);
-	const [currentUser, setCurrentUser] = useState({ user: null, token: "" });
 
 	const [error, setError] = useState("");
 	const [fullName, setFullName] = useState("");
@@ -20,8 +18,6 @@ const Register = () => {
 	const [googleId, setGoogleId] = useState("");
 	const [googleEmail, setGoogleEmail] = useState("");
 	const [regType, setRegType] = useState("");
-
-	const navigate = useNavigate();
 
 	useEffect(() => {
 		function start() {
@@ -48,7 +44,6 @@ const Register = () => {
 					}
 				);
 				if (res.status === 200) {
-					setCurrentUser(res.data);
 					localStorage.setItem("user", JSON.stringify(res.data));
 					window.location.replace("/");
 				}
@@ -84,7 +79,6 @@ const Register = () => {
 					}
 				);
 				if (res.status === 201) {
-					setCurrentUser(res.data);
 					localStorage.setItem("user", JSON.stringify(res.data));
 					window.location.replace("/");
 				}
